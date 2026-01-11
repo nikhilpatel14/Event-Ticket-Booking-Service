@@ -46,7 +46,7 @@ curl -X POST http://localhost:8080/events/create \
 
 ## Book Seat 
 Value 1 should be replaced with actual Event Id , Row no and col number should be inside row limit and col limit
-curl -X POST "http://localhost:8080/1/book?userId=42&row=B&col=7"
+curl -X POST "http://localhost:8080/events/1/book?userId=42&row=B&col=7"
 
 # Event Ticket Booking System (Spring Boot)
 
