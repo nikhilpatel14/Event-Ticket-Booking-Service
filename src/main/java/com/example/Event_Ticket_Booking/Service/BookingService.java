@@ -41,7 +41,7 @@ public class BookingService {
     public void bookSeat(Long eventId, Long userId, String row, int col) {
 
         Seat seat = seatRepository.findSeatForUpdate(eventId, row, col);
-        System.out.println("seat"+seat);
+        // System.out.println("seat"+seat);
         if (seat == null) {
             throw new SeatNotFoundException(
                     "Seat does not exist  for row " + row + " and col " + col + ": Invalid Seat Number"
@@ -65,6 +65,11 @@ public class BookingService {
     public void cancelSeat(Long eventId, Long userId, String row, int col) {
 
         Seat seat = seatRepository.findSeatForUpdate(eventId, row, col);
+        if (seat == null) {
+            throw new SeatNotFoundException(
+                    "Seat does not exist  for row " + row + " and col " + col + ": Invalid Seat Number"
+            );
+        }
 
         boolean canceled =
                 bookingRepository.cancel(eventId, seat.getId(), userId);
